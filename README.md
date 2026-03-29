@@ -1,8 +1,8 @@
-## Complete System Dotfiles
+# Complete System Dotfiles
 
-# Includes
+## Includes
  - hyprland.conf
  - alacritty.toml
 
-# Setup
+## Setup
 Clone and symlink main dotfiles
