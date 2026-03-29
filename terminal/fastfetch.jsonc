@@ -1,0 +1,138 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  
+  "logo": {
+      "type": "builtin",
+      "height": 10,
+      "width": 10,
+      "padding": {
+          "top": 4,
+          "left": 2
+      }
+  },
+
+  "display": {
+    "separator": " >> ",
+    "percent": {
+      "type": 9
+    }
+  },
+
+  "modules": [
+    "title",
+    {
+        "type": "custom",
+        "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+    },
+    {
+        "type": "cpu",
+        "key": " CPU"
+    },
+    {
+        "type": "gpu",
+        "key": " GPU"
+    },
+    {
+        "type": "memory",
+        "key": " Memory"
+    },
+    {
+        "type": "swap",
+        "key": " Swap"
+    },
+    {
+        "type": "disk",
+        "key": " Disk"
+    },
+    {
+        "type": "custom",
+        "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+    },
+    {
+        "type": "custom",
+        "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
+    },
+    {
+        "type": "os",
+        "key": " OS",
+        // "keyColor": "light_green",
+        "format": "{2}"
+    },
+    {
+        "type": "kernel",
+        "key": " Kernel"
+    },
+    {
+        "type": "packages",
+        "key": " Packages"
+    },
+    {
+        "type": "shell",
+        "key": " Shell"
+    },
+    "break",
+
+    {
+        "type": "display",
+        "key": " Display (GN05)"
+    },
+    {
+        "type": "wm",
+        "key": " WM"
+    },
+    {
+        "type": "cursor",
+        "key": " Cursor"
+    },
+    {
+        "type": "terminal",
+        "key": " Terminal"
+    },
+    {
+        "type": "terminalfont",
+        "key": " Terminal Font"
+    },
+    {
+        "type": "custom",
+        "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+    },
+    {
+        "type": "custom",
+        "format": "\u001b[90m┌────────────────Uptime / DT / Locale────────────────┐"
+    },
+    {
+        "type": "uptime",
+        "key": "  ›  Uptime"
+    },
+    {
+        "type": "datetime",
+        "key": "  ›  DateTime"
+    },
+    {
+        "type": "locale",
+        "key": "  ›  Locale"
+    },
+    {
+        "type": "custom",
+        "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+    },
+    {
+        "type": "colors",
+        "paddingLeft": 1,
+        "symbol": "square"
+    }
+
+    // "de",
+    // "wmtheme",
+    // "theme",
+    // "icons",
+    // "font",
+    // "break",
+    
+    // "localip",
+    // "battery",
+    // "poweradapter",
+    // "locale"
+
+  ]
+}
