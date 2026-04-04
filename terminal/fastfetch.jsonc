@@ -7,7 +7,7 @@
       "height": 8,
       "width": 8,
       "padding": {
-          "top": 2,
+          "top": 1,
           "left": 2,
           "right": 4
       }
@@ -17,12 +17,13 @@
     "pipe": false,
     "brightColor": true,
     "constants": [
-        "38;5;245",
-        "38;5;255"
+        ""
     ],
-    "separator": "  ›  ",
+    "separator": "›   ",
     "color": {
-        "separator": "#ffffff"
+        "separator": "#5e5e5e",
+        "keys": "#9dff8c",
+        "title": "#ffffff"
     },
     "key": {
         // "width": 22,
@@ -36,131 +37,137 @@
         }
     },
     "percent": {
-        "type": 9
+        "type": 9,
+        "color": {
+            "green": "light_green",
+            "yellow": "light_yellow",
+            "red": "light_red"
+        }
     }
   },
 
   "modules": [
     {
         "type": "title",
-        "format": "\u001b[{$2}m{user-name}@{host-name}"
+        "format": "{#keys}{user-name}@{host-name}"
     },
     {
         "type": "custom",
-        "format": "\u001b[{$2}m┌─────────────────────────Hardware─────────────────────────┐"
+        "format": "{#separator}┌────────────────────────────Hardware────────────────────────────┐"
     },
     {
         "type": "display",
-        "key": " Display",
+        "key": " Display  ",
         "keyColor": "red",
-        "format": "{name} {inch}\" {width}x{height} {scale-factor}x @ {refresh-rate}Hz"
+        "format": "{name} {inch}\" {width}x{height} {#keys}{scale-factor}x @ {refresh-rate}Hz{#}"
     },
     {
         "type": "cpu",
-        "key": " CPU",
+        "key": " CPU      ",
         "keyColor": "red",
         "temp": true,
-        "format": "{name} ({cores-physical}C/{cores-logical}T) @ {freq-max} [{temperature}]"
+        "format": "{name} {#keys}({cores-physical}C/{cores-logical}T) @ {freq-max}{#} [{temperature}]"
     },
     {
         "type": "gpu",
-        "key": " GPU",
+        "key": " GPU      ",
         "keyColor": "red",
         "driverSpecific": true,
         "hideType": "integrated",
         "temp": true,
-        "format": "{name} [{temperature}]"
+        "format": "{name} {#keys}({type}){#} [{temperature}]"
     },
     {
         "type": "memory",
-        "key": " RAM",
-        "keyColor": "red"
-    },
-    {
-        "type": "disk",
-        "key": " LDISK",
-        "hideFS": "ntfs3",
+        "key": " RAM      ",
         "keyColor": "red",
-        "format": "{size-used} / {size-total} - {filesystem} ({size-percentage})"
+        "format": "{#keys}{used}{#} / {#keys}{total}{#} [{percentage}]"
     },
     {
         "type": "disk",
-        "key": " WDISK",
+        "key": " LDISK    ",
+        "hideFS": "fuseblk",
+        "keyColor": "red",
+        "format": "{#keys}{size-used}{#} / {#keys}{size-total}{#} {#keys}({filesystem}){#} [{size-percentage}]"
+    },
+    {
+        "type": "disk",
+        "key": " WDISK    ",
         "hideFS": "ext4",
         "keyColor": "red",
-        "format": "{size-used} / {size-total} - {filesystem} ({size-percentage})"
+        "format": "{#keys}{size-used}{#} / {#keys}{size-total}{#} {#keys}({filesystem}){#} [{size-percentage}]"
     },
     {
         "type": "custom",
-        "format": "\u001b[{$2}m└──────────────────────────────────────────────────────────┘"
+        "format": "{#separator}└────────────────────────────────────────────────────────────────┘"
     },
     {
         "type": "custom",
-        "format": "\u001b[{$2}m┌─────────────────────────Software─────────────────────────┐"
+        "format": "{#separator}┌────────────────────────────Software────────────────────────────┐"
     },
     {
         "type": "os",
-        "key": " OS",
+        "key": " OS       ",
         "keyColor": "blue",
-        "format": "{pretty-name} [{#keys}{arch}{#output}]"
+        "format": "{pretty-name} {#keys}{arch}{#}"
     },
     {
         "type": "kernel",
-        "key": " KERNEL",
+        "key": " KERNEL   ",
         "keyColor": "blue",
-        "format": "{sysname} [{#keys}{release}{#output}]"
+        "format": "{sysname} {#keys}{release}{#}"
     },
     {
         "type": "shell",
-        "key": " SHELL",
+        "key": " SHELL    ",
         "keyColor": "blue",
-        "format": "{pretty-name} [{#keys}{version}{#output}]"
+        "format": "{pretty-name} {#keys}{version}{#}"
     },
     {
         "type": "bios",
-        "key": " BIOS",
+        "key": " BIOS     ",
         "keyColor": "blue",
-        "format": "{type} [{#keys}{version} {release}{#output}]"
+        "format": "{type} {#keys}{version} {release}{#}"
     },
     {
         "type": "vulkan",
-        "key": " VULKAN",
+        "key": " GRAPHICS ",
         "keyColor": "blue",
-        "format": "Version [{#keys}{api-version}{#output}]"
+        "format": "Vulkan {#keys}{api-version}{#}"
     },
     {
         "type": "packages",
-        "key": " PACKAGES",
+        "key": " PACKAGES ",
         "keyColor": "blue",
-        "format": "[{#keys}{all}{#output}] Total - [{#keys}{pacman}{#output}] pacman, [{#keys}{flatpak-system}{#output}] flatpak"
+        "format": "{#keys}{all}{#} Total - {#keys}{pacman}{#} pacman, {#keys}{flatpak-system}{#} flatpak"
     },
     {
         "type": "custom",
-        "format": "\u001b[{$2}m└──────────────────────────────────────────────────────────┘"
+        "format": "{#separator}└────────────────────────────────────────────────────────────────┘"
     },
     {
         "type": "custom",
-        "format": "\u001b[{$2}m┌─────────────────────Uptime / DateTime────────────────────┐"
+        "format": "{#separator}┌────────────────────────Uptime / DateTime───────────────────────┐"
     },
     {
         "type": "uptime",
-        "key": " UPTIME",
+        "key": " UPTIME   ",
         "keyColor": "magenta",
-        "format": "[{#yellow}{formatted}{#output}]"        
+        "format": "{#keys}{formatted}{#}"        
     },
     {
         "type": "datetime",
-        "key": " DATETIME",
+        "key": " DATETIME ",
         "keyColor": "magenta",
-        "format": "[{#yellow}{month-name} {day-in-month}, {year} >> {hour-pretty}:{minute-pretty}:{second-pretty}{#output}]"
+        "format": "{#keys}{month-name} {day-in-month}, {year} >> {hour-pretty}:{minute-pretty}:{second-pretty}{#}"
     },
     {
         "type": "custom",
-        "format": "\u001b[{$2}m└──────────────────────────────────────────────────────────┘"
+        "format": "{#separator}└────────────────────────────────────────────────────────────────┘"
     },
     {
         "type": "colors",
-        "paddingLeft": 22,
+        "paddingLeft": 26,
         "symbol": "square"
     }
 
